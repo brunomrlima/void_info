@@ -22,15 +22,15 @@ ActiveRecord::Schema.define(version: 2020_05_07_155223) do
   end
 
   create_table "countries", force: :cascade do |t|
-    t.bigint "continents_id", null: false
+    t.bigint "continent_id", null: false
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["continents_id"], name: "index_countries_on_continents_id"
+    t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
   create_table "data_covids", force: :cascade do |t|
-    t.bigint "data_covids_id", null: false
+    t.bigint "country_id", null: false
     t.integer "total_cases"
     t.integer "new_cases"
     t.integer "total_deaths"
@@ -42,11 +42,12 @@ ActiveRecord::Schema.define(version: 2020_05_07_155223) do
     t.integer "deaths_per_million"
     t.integer "total_tests"
     t.integer "tests_per_million"
+    t.datetime "data_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["data_covids_id"], name: "index_data_covids_on_data_covids_id"
+    t.index ["country_id"], name: "index_data_covids_on_country_id"
   end
 
-  add_foreign_key "countries", "continents", column: "continents_id"
-  add_foreign_key "data_covids", "data_covids", column: "data_covids_id"
+  add_foreign_key "countries", "continents"
+  add_foreign_key "data_covids", "countries"
 end
