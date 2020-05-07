@@ -1,0 +1,25 @@
+<section>
+<p style="font: 400 1.3em 'Raleway', sans-serif;color: #333;">
+  <h1>Your daily COVID-19 info is now ready.</h1>
+</p>
+
+<p style="text-align: center;">
+  <% @array.each do |hash| %>
+    <b><%= hash[:country] %></b> <br />
+    Total Cases: <%= hash[:total_cases] %> <br />
+    New Cases: <b style="color:yellowgreen"><%= hash[:new_cases] %></b> <br />
+    Total Deaths: <b style="color:red"><%= hash[:total_deaths] %></b> <br />
+    New Deaths: <b style="color:red">+ <%= hash[:new_deaths] %></b> <br />
+    Total Recovered: <%= hash[:total_recovered] %> <br />
+    Active Cases: <%= hash[:active_cases] %> <br />
+    Critical Cases: <%= hash[:critical_cases] %> <br />
+    <br />
+  <% end %>
+</p>
+
+
+<p style="  font: 400 1.1em 'Raleway', sans-serif;color: #333;">
+  Cheers,<br />
+  The Void Info
+</p>
+</section>
