@@ -1,10 +1,34 @@
-<div class=" demo">
+<div class="demo">
   <div class="content">
     <div id="large-header" class="large-header">
       <canvas id="demo-canvas"></canvas>
-      <h1 class="main-title">
-        We will send you trustable COVID-19 information daily
-      </h1>
+
+      <div class="front">
+        <h1 class="main-title">
+          We will send you trustable COVID-19 information daily
+        </h1>
+
+        <div class="subscribe-box">
+          <%= form_for @email, :url => { :action => "create", controller: 'emails'}, html: {class: "subscribe"} do |f| %>
+            <%= f.email_field :email, placeholder: "example@gmail.com", require: true, autocomplete: false %>
+            <%= button_tag(type: 'submit', class: "btn submit", id: 'validForm') do %>
+              <span class="icon-envelope">Subscribe</span>
+            <% end %>
+          <% end %>
+<!--          <form class="subscribe">-->
+<!--            <input type="email" placeholder="example@gmail.com" autocomplete="off" required >-->
+<!--            <button type="submit">-->
+<!--              <span>Subscribe</span>-->
+<!--            </button>-->
+<!--          </form>-->
+        </div>
+
+      </div>
+
+
+
+
+
     </div>
   </div>
 </div>
