@@ -1,4 +1,4 @@
-# Lottery Games
+# Void Info
 
 This project was made to spread information about COVID-19.
 
