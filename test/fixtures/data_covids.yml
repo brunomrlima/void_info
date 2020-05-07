@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_cases: 1
+  new_cases: 1
+  total_deaths: 1
+  new_deaths: 1
+  total_recovered: 1
+  active_cases: 1
+  critical_cases: 1
+  total_cases_per_million: 1
+  deaths_per_million: 1
+  total_tests: 1
+  tests_per_million: 1
+
+two:
+  total_cases: 1
+  new_cases: 1
+  total_deaths: 1
+  new_deaths: 1
+  total_recovered: 1
+  active_cases: 1
+  critical_cases: 1
+  total_cases_per_million: 1
+  deaths_per_million: 1
+  total_tests: 1
+  tests_per_million: 1
