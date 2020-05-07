@@ -9,10 +9,10 @@ class EmailsController < ApplicationController
       if email.save!
         flash[:notice] = "You successfully subscribed!"
       else
-        flash[:danger] = "Something went wrong... Try again."
+        flash[:alert] = "Something went wrong... Try again."
       end
     else
-      flash[:danger] = "This email is already subscribed."
+      flash[:alert] = "This email is already subscribed."
     end
     redirect_to root_path
   end

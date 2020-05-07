@@ -8,27 +8,17 @@
           We will send you reliable COVID-19 information daily
         </h1>
 
+        <%= render 'layouts/flash' %>
+
         <div class="subscribe-box">
-          <%= form_for @email, :url => { :action => "create", controller: 'emails'}, html: {class: "subscribe"} do |f| %>
-            <%= f.email_field :email, placeholder: "example@gmail.com", require: true, autocomplete: false %>
+          <%= form_for @email, :url => { :action => "create", controller: 'emails'}, html: {class: "subscribe", autocomplete: "off"} do |f| %>
+            <%= f.email_field :email, placeholder: "example@gmail.com", required: true %>
             <%= button_tag(type: 'submit', class: "btn submit", id: 'validForm') do %>
               <span class="icon-envelope">Subscribe</span>
             <% end %>
           <% end %>
-<!--          <form class="subscribe">-->
-<!--            <input type="email" placeholder="example@gmail.com" autocomplete="off" required >-->
-<!--            <button type="submit">-->
-<!--              <span>Subscribe</span>-->
-<!--            </button>-->
-<!--          </form>-->
         </div>
-
       </div>
-
-
-
-
-
     </div>
   </div>
 </div>
