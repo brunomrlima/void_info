@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'realvoidinfo@gmail.com'
+  default from: 'em2427.voidinfo.com'
   layout 'mailer'
 end
