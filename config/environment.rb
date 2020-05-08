@@ -9,7 +9,7 @@ ActionMailer::Base.smtp_settings = {
     :password => Figaro.env.sendgrid_password,
     :domain => 'voidinfo.com',
     :address => 'smtp.sendgrid.net',
-    :port => 465,
+    :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true
 }
