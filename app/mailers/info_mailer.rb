@@ -1,14 +1,17 @@
 class InfoMailer < ApplicationMailer
   include ActionView::Helpers::NumberHelper
   def daily_covid_email(email)
-    set_covid_info
+    set_covid_info(email)
     mail(to: email.email, subject: "Covid-19 Info Today")
   end
 
   private
-    def set_covid_info
+    def set_covid_info(email)
       @array = []
-      country_preferences = Country.where(name: ["USA", "Brazil", "Canada", "World"])
+      preferences = email.preferences
+      country_names = preferences.map{|preference| preference.country.name}
+      country_names.include?("World") ? country_names : country_names << "World"
+      country_preferences = Country.where(name: country_names)
       country_preferences.each do |country|
         hash = {}
         data_covid = country.data_covids.last

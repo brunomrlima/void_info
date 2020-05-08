@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_180136) do
+ActiveRecord::Schema.define(version: 2020_05_08_162729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(version: 2020_05_07_180136) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "preferences", force: :cascade do |t|
+    t.bigint "email_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_preferences_on_country_id"
+    t.index ["email_id"], name: "index_preferences_on_email_id"
+  end
+
   add_foreign_key "countries", "continents"
   add_foreign_key "data_covids", "countries"
+  add_foreign_key "preferences", "countries"
+  add_foreign_key "preferences", "emails"
 end
