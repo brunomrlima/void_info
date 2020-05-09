@@ -5,6 +5,11 @@ class InfoMailer < ApplicationMailer
     mail(to: email.email, subject: "Covid-19 Info Today")
   end
 
+  def welcome_email(email)
+    set_covid_info(email)
+    mail(to: email.email, subject: "Welcome. Your Covid-19 Info Today.")
+  end
+
   private
     def set_covid_info(email)
       @array = []
@@ -16,6 +21,7 @@ class InfoMailer < ApplicationMailer
         hash = {}
         data_covid = country.data_covids.last
         hash[:country] = country.name
+        hash[:date] = data_covid.data_date.strftime("%Y-%m-%d")
         hash[:total_cases] = number_with_delimiter(data_covid.total_cases)
         hash[:new_cases] = number_with_delimiter(data_covid.new_cases)
         hash[:total_deaths] = number_with_delimiter(data_covid.total_deaths)
