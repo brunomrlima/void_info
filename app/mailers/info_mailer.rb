@@ -16,6 +16,7 @@ class InfoMailer < ApplicationMailer
         hash = {}
         data_covid = country.data_covids.last
         hash[:country] = country.name
+        hash[:date] = data_covid.data_date.strftime("%Y-%m-%d")
         hash[:total_cases] = number_with_delimiter(data_covid.total_cases)
         hash[:new_cases] = number_with_delimiter(data_covid.new_cases)
         hash[:total_deaths] = number_with_delimiter(data_covid.total_deaths)
