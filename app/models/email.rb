@@ -7,4 +7,8 @@ class Email < ApplicationRecord
   def is_new_email?
     return Email.find_by(email: self.email).blank?
   end
+
+  def is_subscribed?
+    return self.subscription == true
+  end
 end

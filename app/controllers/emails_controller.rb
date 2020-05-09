@@ -10,12 +10,18 @@ class EmailsController < ApplicationController
     if email.is_new_email?
       if email.save
         InfoMailer.authentication_email(email).deliver_now
-        flash[:notice] = "You successfully subscribed!"
+        flash[:notice] = "You are almost there! We need to verify your email. Check your email inbox. Don't forget to check your spam folder."
       else
         flash[:alert] = "Something went wrong... Try again. Make sure to select all the regions that you prefer."
       end
     else
-      flash[:alert] = "This email is already subscribed."
+      email = Email.find_by(email: email.email)
+      if email.is_subscribed?
+        flash[:alert] = "This email is already subscribed."
+      else
+        InfoMailer.authentication_email(email).deliver_now
+        flash[:notice] = "You are almost there! We need to verify your email. Check your email inbox. Don't forget to check your spam folder."
+      end
     end
     redirect_to root_path
   end
