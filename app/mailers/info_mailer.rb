@@ -5,6 +5,11 @@ class InfoMailer < ApplicationMailer
     mail(to: email.email, subject: "Covid-19 Info Today")
   end
 
+  def welcome_email(email)
+    set_covid_info(email)
+    mail(to: email.email, subject: "Welcome. Your Covid-19 Info Today.")
+  end
+
   private
     def set_covid_info(email)
       @array = []
