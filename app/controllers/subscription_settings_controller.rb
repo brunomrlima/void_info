@@ -3,7 +3,7 @@ class SubscriptionSettingsController < ApplicationController
     email = Rails.application.message_verifier(:subscribe).verify(params[:subscribe_id])
     email = Email.find(email)
     if email.update_attributes(subscription: true)
-      InfoMailer.welcome_email(email)
+      InfoMailer.welcome_email(email).deliver_now
       flash[:notice] = "You're done! You subscribed for COVID-19 Info Emails."
     else
       flash[:alert] = "Something went wrong. Try to access the page again or send us an email."
