@@ -2,12 +2,22 @@ class InfoMailer < ApplicationMailer
   include ActionView::Helpers::NumberHelper
   def daily_covid_email(email)
     set_covid_info(email)
-    mail(to: email.email, subject: "Covid-19 Info Today")
+    set_unsubscription_link(email)
+    @email = email
+    mail(to: email.email, subject: "Latest Covid-19 Info Today")
   end
 
   def welcome_email(email)
     set_covid_info(email)
-    mail(to: email.email, subject: "Welcome. Your Covid-19 Info Today.")
+    set_unsubscription_link(email)
+    @email = email
+    mail(to: email.email, subject: "Email Verified. Check the latest info today in the countries selected.")
+  end
+
+  def authentication_email(email)
+    @subscribe = Rails.application.message_verifier(:subscribe).generate(email.id)
+    @email = email
+    mail(to: @email.email, subject: "Verify your email")
   end
 
   private
@@ -31,6 +41,9 @@ class InfoMailer < ApplicationMailer
         hash[:critical_cases] = number_with_delimiter(data_covid.critical_cases)
         @array << hash
       end
+    end
 
+    def set_unsubscription_link(email)
+      @unsubscribe = Rails.application.message_verifier(:unsubscribe).generate(email.id)
     end
 end

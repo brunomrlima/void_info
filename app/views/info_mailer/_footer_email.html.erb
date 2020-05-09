@@ -1,0 +1,28 @@
+<table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;width:680px;border-collapse:collapse">
+  <tbody><tr><td style="border-collapse:collapse;vertical-align:top">
+
+    <table cellpadding="10" cellspacing="0" border="0" style="width:100%;text-align:center;border-collapse:collapse">
+      <tbody><tr><td style="border-collapse:collapse;vertical-align:top">
+
+        <br>
+
+        <p style="font-size:12px;color:#555;line-height:19px;font-weight:300;margin:0 30px;text-align:center">
+          This system <span class="il">email</span> was sent to <span class="notranslate"><%= @email.email %></span> (<span class="notranslate"><a href="mailto:<%= @email.email %>" style="color:#555;font-weight:300;text-decoration:none" target="_blank"><%= @email.email %></a></span>) <span></span>regarding <span class="il">CODIV-19</span> Void Info Subscription
+          <br>by <%= link_to 'voidinfo.com', 'https://voidinfo.com', target: "_blank" %>, 101 Algoma Street, Thunder Bay, Ontario, P7B 3B7
+        </p>
+        <br>
+
+        <p style="font-size:14px;color:#555;line-height:16px;font-weight:300;margin:20px 30px;text-align:center">
+          If you have any questions, simply respond to this <span class="il">email</span> and we'll be happy to help.
+        </p>
+
+        <p style="font-size:14px;color:#555;line-height:16px;font-weight:300;margin:20px 30px;text-align:center">
+          If you wish to unsubscribe, please access the following link: <br />
+          <%= link_to 'unsubscribe', subscription_settings_unsubscribe_url(unsubscribe_id: @unsubscribe), target: "_blank" %>
+        </p>
+
+      </td></tr></tbody>
+    </table>
+
+  </td></tr></tbody>
+</table>

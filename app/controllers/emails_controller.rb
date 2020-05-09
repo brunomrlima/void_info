@@ -9,7 +9,7 @@ class EmailsController < ApplicationController
     email = Email.new(emails_params)
     if email.is_new_email?
       if email.save
-        InfoMailer.welcome_email(email).deliver_now
+        InfoMailer.authentication_email(email).deliver_now
         flash[:notice] = "You successfully subscribed!"
       else
         flash[:alert] = "Something went wrong... Try again. Make sure to select all the regions that you prefer."
