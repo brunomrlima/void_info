@@ -3,6 +3,7 @@
   <h4 class="text-danger">Unsubscribe from Void Info Emails</h4>
   <p>By unsubscribing, you will no longer receive the latest information about COVID-19.</p>
   <%= form_for(@email, url: subscription_settings_update_path(id: @email.id)) do |f| %>
+    <%= hidden_field_tag :unsubscribe_id,  @unsubscribe_id %>
     <%= f.hidden_field(:subscription, value: false) %>
     <%= f.submit 'Unsubscribe', class: "btn btn-primary bg-danger" %>
     <br />

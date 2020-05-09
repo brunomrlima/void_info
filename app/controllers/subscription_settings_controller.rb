@@ -11,15 +11,22 @@ class SubscriptionSettingsController < ApplicationController
   end
 
   def unsubscribe
-    # email = Rails.application.message_verifier(:unsubscribe).verify(params[:id])
-    # @email = Email.find(email)
-    @email = Email.last
+    @unsubscribe_id = params[:unsubscribe_id]
+    email = Rails.application.message_verifier(:unsubscribe).verify(@unsubscribe_id)
+    @email = Email.find(email)
+    if @email.blank?
+      flash[:alert] = "Something went wrong. Try to access the page again or send us an email."
+      redirect_to root_path
+    end
   end
 
   def update
-    email = Rails.application.message_verifier(:unsubscribe).verify(params[:id])
-    @email = Email.find(params[:id])
-    if @user.update(email_params)
+    email = Rails.application.message_verifier(:unsubscribe).verify(params[:unsubscribe_id])
+    email = Email.find(email)
+    if email.blank?
+      flash[:alert] = 'There was a problem'
+      render :unsubscribe
+    elsif email.update(email_params)
       flash[:notice] = 'Subscription Cancelled'
       redirect_to root_url
     else
