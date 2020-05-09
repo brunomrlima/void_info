@@ -1,0 +1,41 @@
+<section>
+
+  <b><%= @email.email %>,</b>
+
+  <p>
+    To activate your Void Info subscription, please verify your email address.
+    Your subscription will not be activated until your email address is confirmed.
+  </p>
+
+  <%= link_to "Confirm your Email", subscription_settings_subscribe_url(subscribe_id: @subscribe) %>
+
+  <p>
+    Or, copy and paste the following URL into your browser:
+  </p>
+
+  <%= link_to subscription_settings_subscribe_url(subscribe_id: @subscribe), subscription_settings_subscribe_url(subscribe_id: @subscribe) %>
+
+  <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;width:680px;border-collapse:collapse">
+    <tbody><tr><td style="border-collapse:collapse;vertical-align:top">
+
+      <table cellpadding="10" cellspacing="0" border="0" style="width:100%;text-align:center;border-collapse:collapse">
+        <tbody><tr><td style="border-collapse:collapse;vertical-align:top">
+
+          <br>
+
+          <p style="font-size:12px;color:#555;line-height:19px;font-weight:300;margin:0 30px;text-align:center">
+            This system <span class="il">email</span> was sent to <span class="notranslate"><%= @email.email %></span> (<span class="notranslate"><a href="mailto:<%= @email.email %>" style="color:#555;font-weight:300;text-decoration:none" target="_blank"><%= @email.email %></a></span>) <span></span>regarding <span class="il">your</span> Void Info Subscription
+            <br>by <%= link_to 'voidinfo.com', 'https://voidinfo.com', target: "_blank" %>, 101 Algoma Street, Thunder Bay, Ontario, P7B 3B7
+          </p>
+          <br>
+
+          <p style="font-size:14px;color:#555;line-height:16px;font-weight:300;margin:20px 30px;text-align:center">
+            If you have any questions, simply respond to this <span class="il">email</span> and we'll be happy to help.
+          </p>
+
+        </td></tr></tbody>
+      </table>
+
+    </td></tr></tbody>
+  </table>
+</section>
