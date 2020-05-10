@@ -3,6 +3,7 @@ class Email < ApplicationRecord
   accepts_nested_attributes_for :preferences
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Invalid email" }
   scope :subscribed, -> { where(subscription: true) }
+  scope :not_subscribed, -> { where(subscription: false) }
 
   def is_new_email?
     return Email.find_by(email: self.email).blank?
