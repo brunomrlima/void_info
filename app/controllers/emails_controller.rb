@@ -3,6 +3,7 @@ class EmailsController < ApplicationController
     @email = Email.new
     @countries = Country.all.order(name: :asc)
     3.times{@email.preferences.new}
+    @number_subscriptions = Email.all.count
   end
 
   def create
