@@ -8,4 +8,10 @@ namespace :send_info do
     end
   end
 
+  desc "Send info to me"
+  task :covid_info_to_me => :environment do
+    email = Email.where(email: "bruno.mrlima@gmail.com").last
+    InfoMailer.daily_covid_email(email).deliver_now
+  end
+
 end
