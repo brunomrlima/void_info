@@ -6,10 +6,10 @@ class Email < ApplicationRecord
   scope :not_subscribed, -> { where(subscription: false) }
 
   def is_new_email?
-    return Email.find_by(email: self.email).blank?
+    Email.find_by(email: self.email).blank?
   end
 
   def is_subscribed?
-    return self.subscription == true
+    self.subscription == true
   end
 end
