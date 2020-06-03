@@ -10,6 +10,7 @@ class Email < ApplicationRecord
   end
 
   def is_subscribed?
-    self.subscription == true
+    self.subscription
   end
+
 end
