@@ -1,7 +1,7 @@
 class Email < ApplicationRecord
   has_many :preferences, dependent: :destroy
   accepts_nested_attributes_for :preferences
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Invalid email" }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Invalid email" }, presence: true
   scope :subscribed, -> { where(subscription: true) }
   scope :not_subscribed, -> { where(subscription: false) }
 
