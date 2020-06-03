@@ -3,7 +3,7 @@ namespace :get_info do
   desc "Gets info from worldometers"
   task :from_worldometers => :environment do
     puts "Conecting to wordometers"
-    doc = Nokogiri::HTML(open("https://www.worldometers.info/coronavirus/"))
+    doc = Nokogiri::HTML(URI.open("https://www.worldometers.info/coronavirus/"))
     table = doc.at_css('[id="main_table_countries_today"]')
     rows = table.css('tr')
     column_names = rows.css('th').map(&:text)
