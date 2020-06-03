@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   patch 'subscription_settings/update'
   root 'emails#index'
   resources :emails, only: [:index, :create]
-  namespace "api", module: :api do
-    namespace "v1", module: :v1 do
+  namespace "api" do
+    namespace "v1" do
       resources :data_covids, only: [:index]
       resources :countries, only: [:index]
       resources :continents, only: [:index]
