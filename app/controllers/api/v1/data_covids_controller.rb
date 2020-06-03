@@ -8,7 +8,7 @@ class Api::V1::DataCovidsController < ApplicationController
   private
 
     def get_filter_params
-      params.permit(:country, :country_today)
+      params.permit(:country, :continent, :dates)
     end
 
 end

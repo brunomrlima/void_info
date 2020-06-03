@@ -1,8 +1,12 @@
 class DataCovid < ApplicationRecord
   include Filterable
+  include CountryConcern
+  include ContinentConcern
   belongs_to :country
-  scope :filter_by_country, -> (country_name) { joins(:country).where(countries: {name: country_name.titleize}) }
-  scope :filter_by_continent, -> (continent_name) { joins(country: :continent).where(continents: {name: continent_name.titleize}) }
+  scope :filter_by_country, -> (country_name) { joins(:country).where(countries: {name: refactor_country_name(country_name)}) }
+  scope :filter_by_continent, -> (continent_name) { joins(country: :continent).where(continents: {name: refactor_continent_name(continent_name)}) }
+  scope :filter_by_dates, -> (dates) { where(data_date: refactor_dates(dates)) }
+
   def to_h
     {
         "date": self.data_date,
@@ -20,4 +24,5 @@ class DataCovid < ApplicationRecord
         "tests_per_million": self.tests_per_million
     }
   end
+
 end

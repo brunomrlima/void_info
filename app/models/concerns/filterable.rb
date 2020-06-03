@@ -1,7 +1,7 @@
 module Filterable
   extend ActiveSupport::Concern
 
-  module ClassMethods
+  class_methods do
     def filter_data(attributes)
       results = self.where(nil)
       attributes.each do |key, value|
@@ -10,4 +10,5 @@ module Filterable
       results
     end
   end
+
 end
