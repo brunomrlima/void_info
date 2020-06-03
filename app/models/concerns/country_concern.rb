@@ -14,7 +14,8 @@ module CountryConcern
     end
 
     def refactor_dates(dates)
-      return DateTime.now if dates == "today"
+      return DateTime.now.beginning_of_day if dates == "today"
+      return DateTime.yesterday if dates == "yesterday"
       date_times = []
       dates_array = dates.split(",")
       dates_array.each do |date|
