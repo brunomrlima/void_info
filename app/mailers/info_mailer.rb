@@ -23,10 +23,11 @@ class InfoMailer < ApplicationMailer
   private
     def set_covid_info(email)
       @array = []
-      preferences = email.preferences.includes(:country)
-      countries_preferences = preferences.map { |preference| preference.country }
-      countries_preferences |= [Country.find_by(name: "World")]
-      countries_preferences.each do |country|
+      preferences = email.preferences
+      country_names = preferences.map{|preference| preference.country.name}
+      country_names.include?("World") ? country_names : country_names << "World"
+      country_preferences = Country.where(name: country_names)
+      country_preferences.each do |country|
         hash = {}
         data_covid = country.data_covids.last
         hash[:country] = country.name
@@ -43,6 +44,6 @@ class InfoMailer < ApplicationMailer
     end
 
     def set_unsubscription_link(email)
-      @unsubscribe = Rails.application.message_verifier(:unsubscribe).generate(email.id, expires_in: 2.days)
+      @unsubscribe = Rails.application.message_verifier(:unsubscribe).generate(email.id)
     end
 end
