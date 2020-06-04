@@ -46,15 +46,19 @@ RSpec.describe Email, type: :model do
   context 'methods' do
     before(:each) do
       @email_subscribed = Email.create(email: "valid@email", subscription: true)
+      @email_not_subscribed = Email.create(email: "valid2@email")
     end
     it '#is_subscribed?' do
       expect(@email_subscribed.is_subscribed?).to eq(true)
+      expect(@email_not_subscribed.is_subscribed?).to eq(false)
     end
 
     it '#is_new_email?' do
-      new_email = Email.new(email: "new_valid_email@email")
+      new_email = Email.new(email: "another_valid@email")
+      expect(@email_subscribed.is_new_email?).to eq(false)
       expect(new_email.is_new_email?).to eq(true)
     end
+
   end
 
 end
