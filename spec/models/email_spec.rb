@@ -35,10 +35,10 @@ RSpec.describe Email, type: :model do
       Email.create(email: "valid6@email", subscription: true)
     end
 
-    it 'should return subscribed users' do
+    it 'should return subscribed emails' do
       expect(Email.subscribed.size).to eq(2)
     end
-    it 'should return users not subscribed' do
+    it 'should return emails not subscribed' do
       expect(Email.not_subscribed.size).to eq(4)
     end
   end
