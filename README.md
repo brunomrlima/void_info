@@ -1,4 +1,5 @@
 # Void Info
+[![Build Status](https://travis-ci.org/brunomrlima/void_info.svg?branch=master)](https://travis-ci.org/brunomrlima/void_info)
 
 This project was made to spread information about COVID-19.
 
