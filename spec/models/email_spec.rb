@@ -26,26 +26,35 @@ RSpec.describe Email, type: :model do
   end
 
   context 'scope tests' do
-    let (:params) { {email: "valid@email"} }
-
     before(:each) do
-      Email.new(params).save
-      Email.new(params).save
-      Email.new(params.merge(subscription: false)).save
-      Email.new(params.merge(subscription: true)).save
-      Email.new(params.merge(subscription: true)).save
+      Email.create(email: "valid1@email")
+      Email.create(email: "valid2@email")
+      Email.create(email: "valid3@email")
+      Email.create(email: "valid4@email", subscription: false)
+      Email.create(email: "valid5@email", subscription: true)
+      Email.create(email: "valid6@email", subscription: true)
     end
 
     it 'should return subscribed users' do
       expect(Email.subscribed.size).to eq(2)
     end
     it 'should return users not subscribed' do
-      expect(Email.not_subscribed.size).to eq(3)
+      expect(Email.not_subscribed.size).to eq(4)
     end
   end
 
   context 'methods' do
+    before(:each) do
+      @email_subscribed = Email.create(email: "valid@email", subscription: true)
+    end
+    it '#is_subscribed?' do
+      expect(@email_subscribed.is_subscribed?).to eq(true)
+    end
 
+    it '#is_new_email?' do
+      new_email = Email.new(email: "new_valid_email@email")
+      expect(new_email.is_new_email?).to eq(true)
+    end
   end
 
 end
