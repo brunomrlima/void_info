@@ -6,7 +6,7 @@ class Email < ApplicationRecord
   scope :not_subscribed, -> { where(subscription: false) }
 
   def is_new_email?
-    Email.find_by(email: self.email).blank?
+    !Email.exists?(email: self.email)
   end
 
   def is_subscribed?
