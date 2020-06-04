@@ -20,6 +20,9 @@ RSpec.describe Email, type: :model do
       email = Email.new(email: "invalid").save
       expect(email).to eq(false)
     end
+    it 'ensures emails uniqueness' do
+      should validate_uniqueness_of(:email)
+    end
   end
 
   context 'scope tests' do
@@ -39,6 +42,10 @@ RSpec.describe Email, type: :model do
     it 'should return users not subscribed' do
       expect(Email.not_subscribed.size).to eq(3)
     end
+  end
+
+  context 'methods' do
+
   end
 
 end
