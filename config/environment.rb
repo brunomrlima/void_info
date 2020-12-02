@@ -5,8 +5,8 @@ require_relative 'application'
 Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
-    :user_name => Figaro.env.sendgrid_username,
-    :password => Figaro.env.sendgrid_password,
+    :user_name => 'apikey',
+    :password => Figaro.env.sendgrid_api_key,
     :domain => 'voidinfo.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
