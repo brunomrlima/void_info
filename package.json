@@ -1,6 +1,9 @@
 {
   "name": "void_info_app",
   "private": true,
+  "engines": {
+    "node": "14.21.3"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
