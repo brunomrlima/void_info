@@ -131,8 +131,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (2.2.8)
-    rack-proxy (0.7.7)
-      rack
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (6.0.6.1)
@@ -201,7 +199,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    semantic_range (3.0.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
     simplecov (0.22.0)
@@ -239,11 +236,6 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0, < 4.11)
-    webpacker (5.4.4)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -278,7 +270,6 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 5.4.0)
 
 RUBY VERSION
    ruby 3.0.6p216
