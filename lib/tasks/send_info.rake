@@ -1,5 +1,4 @@
 namespace :send_info do
-
   desc "Send info to users"
   task :covid_info => :environment do
     emails = Email.subscribed
@@ -13,5 +12,4 @@ namespace :send_info do
     email = Email.where(email: "bruno.mrlima@gmail.com").last
     InfoMailer.daily_covid_email(email).deliver_now
   end
-
 end
