@@ -2,7 +2,7 @@
   "name": "void_info_app",
   "private": true,
   "engines": {
-    "node": "18.17.1"
+    "node": "20.11.0"
   },
   "build": "webpack --config ./config/webpack/webpack.config.js",
   "dependencies": {
