@@ -4,6 +4,8 @@ class EmailsController < ApplicationController
     @countries = Country.all.order(name: :asc)
     3.times{@email.preferences.new}
     @number_subscriptions = Email.all.count
+    @data_covid_since = DataCovid.first.created_at
+    @data_covid_count = DataCovid.count
   end
 
   def create
