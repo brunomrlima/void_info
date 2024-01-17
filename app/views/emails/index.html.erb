@@ -24,7 +24,13 @@
         </div>
 
         <p>
-          Already <b><%= @number_subscriptions %></b> people subscribed. Thanks for sharing!
+          <b><%= @number_subscriptions %></b> people subscribed. Thanks for sharing!
+        </p>
+        <p>
+          Tracking COVID daily since <b><%= @data_covid_since.strftime("%Y-%m-%d") %></b>
+        </p>
+        <p>
+          <b><%= @data_covid_count %></b> tracked data entries among all countries... and counting!
         </p>
       </div>
     </div>
