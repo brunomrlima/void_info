@@ -7,7 +7,7 @@ class SubscriptionSettingsController < ApplicationController
     if subscribe_verifier.valid_message?(subscribe_id)
       email_id = subscribe_verifier.verify(subscribe_id)
       email = Email.find_by_id(email_id)
-      if email && email.update_attributes(subscription: true)
+      if email && email.update(subscription: true)
         InfoMailer.welcome_email(email).deliver_now
         flash[:notice] = "You're done! You subscribed for COVID-19 Info Emails."
       else
